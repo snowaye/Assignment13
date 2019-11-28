@@ -21,6 +21,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/agpyaephyo/android' }
         maven { url "https://jitpack.io" }
     }
 }

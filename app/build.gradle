@@ -60,6 +60,9 @@ dependencies {
     //Live Data and View Model
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
 
+    //MMTextView
+    implementation 'org.mmtextview:mmtextview:1.10'
+
     def glideVersion = "4.10.0"
     implementation "com.github.bumptech.glide:glide:${glideVersion}"
     kapt "com.github.bumptech.glide:compiler:${glideVersion}"
