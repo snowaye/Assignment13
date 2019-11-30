@@ -4,10 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.padc.batch9.assignment13.data.model.FirebaseModel
-import com.padc.batch9.assignment13.data.model.FirebaseModelImpl
-import com.padc.batch9.assignment13.data.model.UserAuthenticationModel
-import com.padc.batch9.assignment13.data.model.UserAuthenticationModelImpl
+import com.padc.batch9.assignment13.data.model.*
 import com.padc.batch9.assignment13.data.vo.ArticleVO
 import com.padc.batch9.assignment13.delegate.ArticleItemDelegate
 import com.padc.batch9.assignment13.mvp.view.ArticlesView
@@ -20,11 +17,15 @@ class ArticlesPresenter: BaseGoogleSignInPresenter<ArticlesView>(), ArticleItemD
     }
 
     private val model : FirebaseModel = FirebaseModelImpl
+    private val firestoreModel: FirestoreModel = FirestoreModelImpl
     private val userModel : UserAuthenticationModel = UserAuthenticationModelImpl
     private val clearedLiveData = MutableLiveData<Unit>()
 
     fun onUIReady(owner: LifecycleOwner){
-        model.getAllArticles(clearedLiveData).observe(owner, Observer {
+//        model.getAllArticles(clearedLiveData).observe(owner, Observer {
+//            mView.showArticles(it)
+//        })
+        firestoreModel.getAllArticles(clearedLiveData).observe(owner, Observer {
             mView.showArticles(it)
         })
     }

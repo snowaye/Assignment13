@@ -5,16 +5,14 @@ import android.net.Uri
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.padc.batch9.assignment13.data.model.FirebaseModel
-import com.padc.batch9.assignment13.data.model.FirebaseModelImpl
-import com.padc.batch9.assignment13.data.model.UserAuthenticationModel
-import com.padc.batch9.assignment13.data.model.UserAuthenticationModelImpl
+import com.padc.batch9.assignment13.data.model.*
 import com.padc.batch9.assignment13.data.vo.ArticleVO
 import com.padc.batch9.assignment13.mvp.view.ArticleDetailView
 
 class ArticleDetailPresenter: BaseGoogleSignInPresenter<ArticleDetailView>() {
 
     private val model: FirebaseModel = FirebaseModelImpl
+    private val firestoreModel: FirestoreModel = FirestoreModelImpl
     private val userModel: UserAuthenticationModel = UserAuthenticationModelImpl
     private val clearedLiveData = MutableLiveData<Unit>()
 
@@ -22,7 +20,10 @@ class ArticleDetailPresenter: BaseGoogleSignInPresenter<ArticleDetailView>() {
     private var pickedImage: Uri? = null
 
     fun onUIReady(owner: LifecycleOwner, id: String) {
-        model.getArticleById(id, clearedLiveData).observe(owner, Observer {
+//        model.getArticleById(id, clearedLiveData).observe(owner, Observer {
+//
+//        })
+        firestoreModel.getArticleById(id, clearedLiveData).observe(owner, Observer {
             mView.showArticle(it)
             article = it
         })
@@ -34,7 +35,8 @@ class ArticleDetailPresenter: BaseGoogleSignInPresenter<ArticleDetailView>() {
     }
 
     fun onClapped(count: Int) {
-        model.updateClapCount(1, article)
+        //model.updateClapCount(1, article)
+        firestoreModel.updateClapCount(1, article)
     }
 
     fun onCommentClicked(context: Context) {
@@ -47,7 +49,7 @@ class ArticleDetailPresenter: BaseGoogleSignInPresenter<ArticleDetailView>() {
 
     fun onCommentSendClicked(comment: String) {
         if (comment.isNotEmpty() || pickedImage != null){
-            model.addComment(comment, pickedImage,  article)
+            firestoreModel.addComment(comment, pickedImage,  article)
         }
     }
 
