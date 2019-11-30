@@ -21,7 +21,7 @@ import com.padc.batch9.assignment13.util.STORAGE_FOLDER_PATH
 import kotlin.collections.ArrayList
 
 
-object FirestoreModelImpl: FirestoreModel {
+object FirestoreModelImpl: FirebaseModel {
 
     const val TAG = "FirebaseModel"
 

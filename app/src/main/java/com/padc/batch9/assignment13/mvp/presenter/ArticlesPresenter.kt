@@ -16,8 +16,8 @@ class ArticlesPresenter: BaseGoogleSignInPresenter<ArticlesView>(), ArticleItemD
         mView.navigateToDetail(data.id)
     }
 
-    private val model : FirebaseModel = FirebaseModelImpl
-    private val firestoreModel: FirestoreModel = FirestoreModelImpl
+//    private val model : FirebaseModel = FirebaseModelImpl
+    private val firestoreModel: FirebaseModel = FirestoreModelImpl
     private val userModel : UserAuthenticationModel = UserAuthenticationModelImpl
     private val clearedLiveData = MutableLiveData<Unit>()
 

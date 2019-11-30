@@ -11,8 +11,8 @@ import com.padc.batch9.assignment13.mvp.view.ArticleDetailView
 
 class ArticleDetailPresenter: BaseGoogleSignInPresenter<ArticleDetailView>() {
 
-    private val model: FirebaseModel = FirebaseModelImpl
-    private val firestoreModel: FirestoreModel = FirestoreModelImpl
+//    private val model: FirebaseModel = FirebaseModelImpl
+    private val firestoreModel: FirebaseModel = FirestoreModelImpl
     private val userModel: UserAuthenticationModel = UserAuthenticationModelImpl
     private val clearedLiveData = MutableLiveData<Unit>()
 
