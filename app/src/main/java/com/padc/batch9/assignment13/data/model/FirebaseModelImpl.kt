@@ -52,17 +52,17 @@ object FirebaseModelImpl: FirebaseModel {
 
                 Log.d(TAG, "Value is: $articles")
 
-//                for (article in articles) {
-//                    fireStoreRef.collection("articles")
-//                        .document(article.id)
-//                        .set(article)
-//                        .addOnSuccessListener { documentReference ->
-//                            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference}")
-//                        }
-//                        .addOnFailureListener { e ->
-//                            Log.w(TAG, "Error adding document", e)
-//                        }
-//                }
+                for (article in articles) {
+                    fireStoreRef.collection("articles")
+                        .document(article.id)
+                        .set(article)
+                        .addOnSuccessListener { documentReference ->
+                            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference}")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w(TAG, "Error adding document", e)
+                        }
+                }
 
 
                 liveData.value = articles
